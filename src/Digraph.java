@@ -28,7 +28,6 @@ public class Digraph {
         adj[v].add(w);
     }
 
-
     /**
      * Vertices connected to v by edges pointing from v
      */
