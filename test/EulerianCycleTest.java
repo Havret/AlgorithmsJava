@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EulerianCycleTest {
     @Test
-    void can_detect_if_graph_has_not_an_euler_cycle() {
+    void can_detect_if_graph_does_not_have_an_euler_cycle() {
         var graph = createTargetGraphWithoutCycle();
 
         var euler = new EulerianCycle(graph);
