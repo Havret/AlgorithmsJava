@@ -53,6 +53,11 @@ public class Digraph {
      * Reverse of this digraph
      */
     public Digraph reverse() {
-        return null;
+        Digraph reveredDigraph = new Digraph(V());
+        for (int v = 0; v < V(); v++)
+            for (int w : adj(v)) {
+                reveredDigraph.addEdge(w, v);
+            }
+        return reveredDigraph;
     }
 }
