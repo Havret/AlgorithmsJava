@@ -54,7 +54,6 @@ class TopologicalTest {
         graph.addEdge(9, 12);
         graph.addEdge(11, 12);
 
-
         return graph;
     }
 }
