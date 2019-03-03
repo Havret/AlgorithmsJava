@@ -1,10 +1,8 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class DegreesTest {
     @Test
@@ -47,6 +45,25 @@ class DegreesTest {
 
         var degrees = new Degrees(graph);
         assertIterableEquals(degrees.sinks(), Collections.singletonList(4));
+    }
+
+    @Test
+    void can_detect_that_a_digraph_is_not_a_map() {
+        var graph = createDigraph();
+
+        var degrees = new Degrees(graph);
+        assertFalse(degrees.isMap());
+    }
+
+    @Test
+    void can_detect_that_a_digraph_is_a_map() {
+        var graph = new Digraph(3);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 1);
+
+        var degrees = new Degrees(graph);
+        assertTrue(degrees.isMap());
     }
 
     private static Digraph createDigraph() {

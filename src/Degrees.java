@@ -5,12 +5,14 @@ public class Degrees {
     private int[] outdegrees;
     private LinkedList<Integer> sources;
     private LinkedList<Integer> sinks;
+    private boolean isMap;
 
     public Degrees(Digraph graph) {
         indegrees = new int[graph.V()];
         outdegrees = new int[graph.V()];
         sources = new LinkedList<>();
         sinks = new LinkedList<>();
+        isMap = true;
 
         for (int v = 0; v < graph.V(); v++) {
             for (var w : graph.adj(v)) {
@@ -25,6 +27,9 @@ public class Degrees {
             }
             if (outdegree(v) == 0) {
                 sinks.add(v);
+            }
+            if (outdegree(v) != 1) {
+                isMap = false;
             }
         }
     }
@@ -55,5 +60,12 @@ public class Degrees {
      */
     public Iterable<Integer> sinks() {
         return sinks;
+    }
+
+    /**
+     * Is graph a map?
+     */
+    public boolean isMap() {
+        return isMap;
     }
 }
