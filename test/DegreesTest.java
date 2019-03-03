@@ -41,6 +41,14 @@ class DegreesTest {
         assertIterableEquals(degrees.sources(), Collections.singletonList(0));
     }
 
+    @Test
+    void can_find_sins_in_a_digraph() {
+        var graph = createDigraph();
+
+        var degrees = new Degrees(graph);
+        assertIterableEquals(degrees.sinks(), Collections.singletonList(4));
+    }
+
     private static Digraph createDigraph() {
         var graph = new Digraph(5);
         graph.addEdge(0, 1);
