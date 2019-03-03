@@ -1,6 +1,10 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 class DegreesTest {
     @Test
@@ -27,6 +31,14 @@ class DegreesTest {
         assertEquals(2, degrees.indegree(2));
         assertEquals(1, degrees.indegree(3));
         assertEquals(2, degrees.indegree(4));
+    }
+
+    @Test
+    void can_find_sources_in_a_digraph() {
+        var graph = createDigraph();
+
+        var degrees = new Degrees(graph);
+        assertIterableEquals(degrees.sources(), Collections.singletonList(0));
     }
 
     private static Digraph createDigraph() {
