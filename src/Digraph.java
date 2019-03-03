@@ -28,6 +28,15 @@ public class Digraph {
         adj[v].add(w);
     }
 
+    public boolean hasEdge(int v, int w) {
+        for (int i : adj(v)) {
+            if (i == w) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Vertices connected to v by edges pointing from v
      */
