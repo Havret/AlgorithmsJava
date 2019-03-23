@@ -1,22 +1,40 @@
 public class MinPQ<Key extends Comparable<Key>> {
     private Key[] pq;
-    private int N = 0;
+    private int n = 0;
 
-    public MinPQ(int maxN) {
-        pq = (Key[]) new Comparable[maxN + 1];
+    public MinPQ(int initCapacity) {
+        pq = (Key[]) new Comparable[initCapacity + 1];
+    }
+
+    public MinPQ() {
+        this(1);
     }
 
     public boolean isEmpty() {
-        return N == 0;
+        return n == 0;
     }
 
     public int size() {
-        return N;
+        return n;
     }
 
-    public void insert(Key v) {
-        pq[++N] = v;
-        swim(N);
+    public void insert(Key key) {
+        // double size of array if necessary
+        if (n == pq.length - 1) {
+            resize(2 * pq.length);
+        }
+
+        // add key, and percolate it up to maintain heap invariant
+        pq[++n] = key;
+        swim(n);
+    }
+
+    private void resize(int capacity) {
+        Key[] temp = (Key[]) new Comparable[capacity];
+        for (int i = 0; i <= n; i++) {
+            temp[i] = pq[i];
+        }
+        pq = temp;
     }
 
     private void swim(int k) {
@@ -27,17 +45,22 @@ public class MinPQ<Key extends Comparable<Key>> {
     }
 
     public Key delMin() {
-        Key max = pq[1];
-        exch(1, N--);
-        pq[N + 1] = null;
+        Key min = pq[1];
+        exch(1, n--);
+        pq[n + 1] = null;
         sink(1);
-        return max;
+
+        if ((n > 0) && n == (pq.length - 1) / 4) {
+            resize(pq.length / 2);
+        }
+
+        return min;
     }
 
     private void sink(int k) {
-        while (2 * k <= N) {
+        while (2 * k <= n) {
             int j = 2 * k;
-            if (j < N && greater(j, j + 1)) {
+            if (j < n && greater(j, j + 1)) {
                 j++;
             }
             if (!greater(k, j)) {
