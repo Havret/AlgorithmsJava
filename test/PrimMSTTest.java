@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class LazyPrimMSTTest {
+class PrimMSTTest {
     @Test
     void should_find_mst_for_given_graph() {
         EdgeWeighedGraph graph = new EdgeWeighedGraph(16);
@@ -25,10 +25,10 @@ class LazyPrimMSTTest {
         graph.addEdge(new Edge(6, 0, 0.58));
         graph.addEdge(new Edge(6, 4, 0.93));
 
-        LazyPrimMST lazyPrimMST = new LazyPrimMST(graph);
+        PrimMST primMST = new PrimMST(graph);
 
         HashSet<Edge> result = new HashSet<>();
-        for (Edge edge : lazyPrimMST.edges()) {
+        for (Edge edge : primMST.edges()) {
             result.add(edge);
         }
 
