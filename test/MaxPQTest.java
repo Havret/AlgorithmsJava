@@ -17,7 +17,7 @@ class MaxPQTest {
         maxPQ.insert(5);
         maxPQ.insert(10);
 
-        for (int i = 11; i > 0; i--) {
+        for (int i = 10; i > 0; i--) {
             assertEquals(i, maxPQ.delMax());
         }
     }
