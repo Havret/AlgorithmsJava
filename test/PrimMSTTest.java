@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class PrimMSTTest {
     @Test
     void should_find_mst_for_given_graph() {
-        EdgeWeighedGraph graph = new EdgeWeighedGraph(16);
+        EdgeWeightedGraph graph = new EdgeWeightedGraph(16);
         graph.addEdge(new Edge(4, 5, 0.35));
         graph.addEdge(new Edge(4, 7, 0.37));
         graph.addEdge(new Edge(5, 7, 0.28));

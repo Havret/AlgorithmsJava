@@ -6,7 +6,7 @@ public class LazyPrimMST {
     private Queue<Edge> mst;    // MST edges
     private MinPQ<Edge> pq;     // crossing (and ineligible) edges
 
-    public LazyPrimMST(EdgeWeighedGraph graph) {
+    public LazyPrimMST(EdgeWeightedGraph graph) {
         pq = new MinPQ<>();
         marked = new boolean[graph.V()];
         mst = new Queue<>();
@@ -31,7 +31,7 @@ public class LazyPrimMST {
         }
     }
 
-    private void visit(EdgeWeighedGraph graph, int v) {
+    private void visit(EdgeWeightedGraph graph, int v) {
         marked[v] = true;
         for (Edge edge : graph.adj(v)) {
             if (!marked[edge.other(v)]) {

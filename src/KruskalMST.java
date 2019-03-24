@@ -1,7 +1,7 @@
 public class KruskalMST {
     private Queue<Edge> mst;
 
-    public KruskalMST(EdgeWeighedGraph graph) {
+    public KruskalMST(EdgeWeightedGraph graph) {
         mst = new Queue<>();
 
         MinPQ<Edge> pq = new MinPQ<>(graph.E());

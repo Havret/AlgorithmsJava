@@ -9,7 +9,7 @@ public class PrimMST {
     private boolean[] marked;       // true if v on tree
     private IndexMinPQ<Double> pq;  // eligible crossing edges
 
-    public PrimMST(EdgeWeighedGraph graph) {
+    public PrimMST(EdgeWeightedGraph graph) {
         edgeTo = new Edge[graph.V()];
         distTo = new double[graph.V()];
         marked = new boolean[graph.V()];
@@ -25,7 +25,7 @@ public class PrimMST {
         }
     }
 
-    private void visit(EdgeWeighedGraph graph, int v) {
+    private void visit(EdgeWeightedGraph graph, int v) {
         marked[v] = true;
         for (Edge edge : graph.adj(v)) {
             int w = edge.other(v);

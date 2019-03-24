@@ -1,11 +1,11 @@
 import java.util.LinkedList;
 
-public class EdgeWeighedGraph {
+public class EdgeWeightedGraph {
     private final int V;
     private int E;
     private LinkedList<Edge>[] adj;
 
-    public EdgeWeighedGraph(int V) {
+    public EdgeWeightedGraph(int V) {
         this.V = V;
         this.E = 0;
         adj = (LinkedList<Edge>[]) new LinkedList[V];
