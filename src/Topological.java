@@ -9,6 +9,14 @@ public class Topological {
         }
     }
 
+    public Topological(EdgeWeightedDigraph graph) {
+        var cycleFinder = new EdgeWeightedDirectedCycle(graph);
+        if (!cycleFinder.hasCycle()) {
+            var dfs = new DepthFirstOrder(graph);
+            order = dfs.reversePost();
+        }
+    }
+
     /**
      * @return Is graph a directed acyclic graph?
      */

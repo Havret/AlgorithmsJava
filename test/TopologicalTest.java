@@ -56,4 +56,43 @@ class TopologicalTest {
 
         return graph;
     }
+
+    @Test
+    void can_detect_if_edge_weighted_digraph_is_DAG() {
+        var graph = createEWDAG();
+
+        var topological = new Topological(graph);
+
+        assertTrue(topological.isDAG());
+    }
+
+    @Test
+    void can_detect_if_edge_weighted_digraph_is_not_DAG() {
+        var graph = createEWDAG();
+
+        // add cycle
+        graph.addEdge(new DirectedEdge(7,1,0.5));
+
+        var topological = new Topological(graph);
+
+        assertFalse(topological.isDAG());
+    }
+
+    static EdgeWeightedDigraph createEWDAG() {
+        EdgeWeightedDigraph graph = new EdgeWeightedDigraph(8);
+        graph.addEdge(new DirectedEdge(5, 4, 0.35));
+        graph.addEdge(new DirectedEdge(4, 7, 0.37));
+        graph.addEdge(new DirectedEdge(5, 7, 0.28));
+        graph.addEdge(new DirectedEdge(5, 1, 0.32));
+        graph.addEdge(new DirectedEdge(4, 0, 0.38));
+        graph.addEdge(new DirectedEdge(0, 2, 0.26));
+        graph.addEdge(new DirectedEdge(3, 7, 0.39));
+        graph.addEdge(new DirectedEdge(1, 3, 0.29));
+        graph.addEdge(new DirectedEdge(7, 2, 0.34));
+        graph.addEdge(new DirectedEdge(6, 2, 0.40));
+        graph.addEdge(new DirectedEdge(3, 6, 0.52));
+        graph.addEdge(new DirectedEdge(6, 0, 0.58));
+        graph.addEdge(new DirectedEdge(6, 4, 0.93));
+        return graph;
+    }
 }

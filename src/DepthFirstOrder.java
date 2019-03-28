@@ -17,11 +17,39 @@ public class DepthFirstOrder {
         }
     }
 
+    public DepthFirstOrder(EdgeWeightedDigraph graph) {
+        pre = new Queue<>();
+        post = new Queue<>();
+        reversePost = new Stack<>();
+        marked = new boolean[graph.V()];
+
+        for (int v = 0; v < graph.V(); v++) {
+            if (!marked[v]) {
+                dfs(graph, v);
+            }
+        }
+    }
+
     private void dfs(Digraph graph, int v) {
         pre.enqueue(v);
 
         marked[v] = true;
         for (var w : graph.adj(v)) {
+            if (!marked[w]) {
+                dfs(graph, w);
+            }
+        }
+
+        post.enqueue(v);
+        reversePost.push(v);
+    }
+
+    private void dfs(EdgeWeightedDigraph graph, int v) {
+        pre.enqueue(v);
+
+        marked[v] = true;
+        for (var edge : graph.adj(v)) {
+            var w = edge.to();
             if (!marked[w]) {
                 dfs(graph, w);
             }
