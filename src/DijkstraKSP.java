@@ -43,6 +43,19 @@ public class DijkstraKSP {
         return path.edges;
     }
 
+    public double getDistance(int k) {
+        if (k > paths.size()) {
+            return -1;
+        }
+
+        Path path = paths.get(k - 1);
+        return path.weight;
+    }
+
+    public int count() {
+        return paths.size();
+    }
+
     private class Path implements Comparable<Path> {
         private LinkedList<DirectedEdge> edges = new LinkedList<>();
         private HashSet<Integer> vertices = new HashSet<>();
