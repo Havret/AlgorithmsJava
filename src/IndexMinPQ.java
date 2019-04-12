@@ -2,7 +2,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> {
     private int n;          // number of elements of PQ
     private int[] pq;       // binary heap using 1-based indexing
     private int[] qp;       // inverse qp[oq[i]] = pq[qp[i]]
-    private Key[] keys;    // items with priorities
+    private Key[] keys;     // items with priorities
 
     public IndexMinPQ(int initCapacity) {
         keys = (Key[]) new Comparable[initCapacity + 1];
