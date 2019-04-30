@@ -4,7 +4,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LSDTest {
+class MSDTest {
     @Test
     void it_should_sort_array_of_fixed_length_strings() {
         String[] a = {
@@ -23,7 +23,7 @@ class LSDTest {
                 "3ATW723",
         };
 
-        LSD.sort(a, 7);
+        MSD.sort(a);
 
         assertArrayEquals(Arrays.stream(a).sorted().toArray(), a);
     }
