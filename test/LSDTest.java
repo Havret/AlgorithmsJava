@@ -27,4 +27,14 @@ class LSDTest {
 
         assertArrayEquals(Arrays.stream(a).sorted().toArray(), a);
     }
+
+    @Test
+    void it_should_sort_array_of_longs() {
+        long[] a = {Long.MAX_VALUE, Long.MAX_VALUE - 1, Long.MAX_VALUE - 2, Long.MAX_VALUE - 3, Long.MAX_VALUE - 4, 0};
+
+        LSD.sort(a);
+
+        long[] expected = {0, Long.MAX_VALUE - 4, Long.MAX_VALUE - 3, Long.MAX_VALUE - 2, Long.MAX_VALUE - 1, Long.MAX_VALUE};
+        assertArrayEquals(expected, a);
+    }
 }
