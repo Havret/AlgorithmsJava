@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * Ternary search trie symbol table
  */
@@ -6,7 +8,7 @@ public class TST<Value> {
 
     private class Node {
         char c;
-        Node left, mid, righ;
+        Node left, mid, right;
         Value val;
     }
 
@@ -29,7 +31,7 @@ public class TST<Value> {
         if (c < x.c) {
             return get(x.left, key, d);
         } else if (c > x.c) {
-            return get(x.righ, key, d);
+            return get(x.right, key, d);
         } else if (d < key.length() - 1) {
             return get(x.mid, key, d + 1);
         } else {
@@ -51,7 +53,7 @@ public class TST<Value> {
         if (c < x.c) {
             x.left = put(x.left, key, val, d);
         } else if (c > x.c) {
-            x.righ = put(x.righ, key, val, d);
+            x.right = put(x.right, key, val, d);
         } else if (d < key.length() - 1) {
             x.mid = put(x.mid, key, val, d + 1);
         } else {
