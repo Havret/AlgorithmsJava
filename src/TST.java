@@ -62,4 +62,37 @@ public class TST<Value> {
 
         return x;
     }
+
+    public Iterable<String> keysWithPrefix(String prefix) {
+        if (prefix == null) {
+            throw new IllegalArgumentException("calls keysWithPrefix() with null argument");
+        }
+
+        var keys = new LinkedList<String>();
+        var node = get(root, prefix, 0);
+        if (node == null) {
+            return keys;
+        }
+        if (node.val != null) {
+            keys.add(prefix);
+        }
+        collect(node.mid, new StringBuilder(prefix), keys);
+        return keys;
+    }
+
+    private void collect(Node x, StringBuilder prefix, LinkedList<String> keys) {
+        if (x == null) {
+            return;
+        }
+        if (x.val != null) {
+            keys.add(prefix.toString() + x.c);
+        }
+
+        collect(x.left, prefix, keys);
+
+        collect(x.mid, prefix.append(x.c), keys);
+        prefix.deleteCharAt(prefix.length() - 1);
+
+        collect(x.right, prefix, keys);
+    }
 }
