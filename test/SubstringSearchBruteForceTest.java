@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SubstringSearchBruteForceTest {
     @Test
-    void should_find_the_index_withing_the_text_of_the_first_occurence_of_specified_pattern() {
+    void should_find_the_index_withing_the_text_of_the_first_occurrence_of_specified_pattern() {
         assertEquals(6, SubstringSearchBruteForce.search("ABRA", "ABACADABRAC"));
     }
 
