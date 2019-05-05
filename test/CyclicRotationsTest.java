@@ -48,4 +48,14 @@ class CyclicRotationsTest {
 
         assertFalse(CyclicRotations.hasCyclicRotations(array));
     }
+
+    @Test
+    void should_determine_if_string_a_is_cyclic_rotation_of_string_b() {
+        assertTrue(CyclicRotations.areCyclicRotations("winterbreak", "breakwinter"));
+    }
+
+    @Test
+    void should_determine_if_string_a_is_not_cyclic_rotation_of_string_b() {
+        assertFalse(CyclicRotations.areCyclicRotations("winterbreak", "polynomial"));
+    }
 }
